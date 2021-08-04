@@ -1,3 +1,4 @@
+import 'package:findjob/ui/pages/onboarding_page.dart';
 import 'package:findjob/ui/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SplashPage(),
+      // home: SplashPage(),
+      home: OnBoardingPage(),
     );
   }
 }
