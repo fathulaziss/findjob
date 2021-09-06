@@ -1,8 +1,10 @@
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/shared.dart';
+import 'package:findjob/ui/pages/register_page.dart';
 import 'package:findjob/ui/widgets/button_outlined.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -26,8 +28,13 @@ class OnBoardingPage extends StatelessWidget {
                 children: [
                   Text('Build Your Habbit\nto Get Future Career\nLike a Master',
                       style: whiteTextStyle.copyWith(
-                          fontSize: 32, fontWeight: FontWeight.w400)),
-                  SizedBox(height: 20),
+                          fontSize: (MediaQuery.of(context).size.width > 380)
+                              ? 30
+                              : 28,
+                          fontWeight: FontWeight.w400)),
+                  SizedBox(
+                      height:
+                          (MediaQuery.of(context).size.width > 380) ? 20 : 10),
                   Text('18.000 jobs available',
                       style: whiteTextStyle.copyWith(
                           fontSize: 14, fontWeight: FontWeight.w300))
@@ -44,7 +51,9 @@ class OnBoardingPage extends StatelessWidget {
                   children: [
                     ButtonPrimary(
                       title: 'Get Started',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(RegisterPage());
+                      },
                     ),
                     SizedBox(height: 16),
                     ButtonOutlined(
