@@ -28,13 +28,8 @@ class OnBoardingPage extends StatelessWidget {
                 children: [
                   Text('Build Your Habbit\nto Get Future Career\nLike a Master',
                       style: whiteTextStyle.copyWith(
-                          fontSize: (MediaQuery.of(context).size.width > 380)
-                              ? 30
-                              : 28,
-                          fontWeight: FontWeight.w400)),
-                  SizedBox(
-                      height:
-                          (MediaQuery.of(context).size.width > 380) ? 20 : 10),
+                          fontSize: 26, fontWeight: FontWeight.w400)),
+                  SizedBox(height: 20),
                   Text('18.000 jobs available',
                       style: whiteTextStyle.copyWith(
                           fontSize: 14, fontWeight: FontWeight.w300))
@@ -52,7 +47,7 @@ class OnBoardingPage extends StatelessWidget {
                     ButtonPrimary(
                       title: 'Get Started',
                       onPressed: () {
-                        Get.to(RegisterPage());
+                        Get.to(() => RegisterPage(titleBack: "Back"));
                       },
                     ),
                     SizedBox(height: 16),

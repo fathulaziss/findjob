@@ -5,11 +5,17 @@ class InputFormPrimary extends StatefulWidget {
   final String? title;
   final Color? colorBorder;
   final String? hintText;
+  final EdgeInsetsGeometry? margin;
+  final bool? obsecureText;
+  final TextEditingController? controller;
 
   const InputFormPrimary({
     required this.title,
+    this.obsecureText,
+    required this.controller,
     this.colorBorder,
     required this.hintText,
+    this.margin,
     Key? key,
   }) : super(key: key);
 
@@ -22,15 +28,13 @@ class _InputFormPrimaryState extends State<InputFormPrimary> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(
-          bottom: (MediaQuery.of(context).size.width > 380) ? 20 : 10),
+      margin: widget.margin ?? EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(widget.title ?? '',
               style: grayTextStyle.copyWith(
-                  fontSize: (MediaQuery.of(context).size.width > 380) ? 16 : 14,
-                  fontWeight: FontWeight.w400)),
+                  fontSize: 14, fontWeight: FontWeight.w400)),
           SizedBox(height: 8),
           Container(
             width: double.infinity,
@@ -42,16 +46,17 @@ class _InputFormPrimaryState extends State<InputFormPrimary> {
                     width: 1, color: widget.colorBorder ?? Colors.transparent)),
             child: TextFormField(
               style: blackTextStyle.copyWith(
-                  fontSize: (MediaQuery.of(context).size.width > 380) ? 16 : 14,
-                  fontWeight: FontWeight.w400),
+                  fontSize: 14, fontWeight: FontWeight.w400),
               autofocus: true,
+              obscureText: widget.obsecureText ?? false,
+              controller: widget.controller,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(horizontal: 20),
                 hintStyle: grayTextStyle.copyWith(
-                    fontSize:
-                        (MediaQuery.of(context).size.width > 380) ? 16 : 14,
-                    fontWeight: FontWeight.w300),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    letterSpacing: 0.2),
                 hintText: widget.hintText ?? '',
               ),
             ),
