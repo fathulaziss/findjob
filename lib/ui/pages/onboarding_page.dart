@@ -1,5 +1,6 @@
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/shared.dart';
+import 'package:findjob/ui/pages/login_page.dart';
 import 'package:findjob/ui/pages/register_page.dart';
 import 'package:findjob/ui/widgets/button_outlined.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
@@ -53,7 +54,9 @@ class OnBoardingPage extends StatelessWidget {
                     SizedBox(height: 16),
                     ButtonOutlined(
                       title: 'Sign In',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => LoginPage());
+                      },
                     ),
                     SizedBox(height: 50)
                   ],
