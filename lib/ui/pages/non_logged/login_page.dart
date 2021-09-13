@@ -1,5 +1,6 @@
 import 'package:findjob/shared/shared.dart';
-import 'package:findjob/ui/pages/register_page.dart';
+import 'package:findjob/ui/pages/logged/main_page.dart';
+import 'package:findjob/ui/pages/non_logged/register_page.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:findjob/ui/widgets/input_form_primary.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,11 @@ class _LoginPageState extends State<LoginPage> {
                   titleStyle: whiteTextStyle.copyWith(
                       fontSize: 14, fontWeight: FontWeight.w500),
                   title: 'Sign In',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => MainPage(
+                          initial: 0,
+                        ));
+                  },
                 ),
                 TextButton(
                   onPressed: () {

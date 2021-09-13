@@ -1,7 +1,7 @@
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/shared.dart';
-import 'package:findjob/ui/pages/login_page.dart';
-import 'package:findjob/ui/pages/register_page.dart';
+import 'package:findjob/ui/pages/non_logged/login_page.dart';
+import 'package:findjob/ui/pages/non_logged/register_page.dart';
 import 'package:findjob/ui/widgets/button_outlined.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:flutter/material.dart';
