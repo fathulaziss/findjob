@@ -1,4 +1,4 @@
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class InputFormPrimary extends StatefulWidget {
@@ -32,9 +32,7 @@ class _InputFormPrimaryState extends State<InputFormPrimary> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.title ?? '',
-              style: grayTextStyle.copyWith(
-                  fontSize: 14, fontWeight: FontWeight.w400)),
+          Text(widget.title ?? '', style: TextStyles.greyNormal),
           SizedBox(height: 8),
           Container(
             width: double.infinity,
@@ -45,18 +43,14 @@ class _InputFormPrimaryState extends State<InputFormPrimary> {
                 border: Border.all(
                     width: 1, color: widget.colorBorder ?? Colors.transparent)),
             child: TextFormField(
-              style: blackTextStyle.copyWith(
-                  fontSize: 14, fontWeight: FontWeight.w400),
+              style: TextStyles.blackNormal,
               autofocus: true,
               obscureText: widget.obsecureText ?? false,
               controller: widget.controller,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                hintStyle: grayTextStyle.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    letterSpacing: 0.2),
+                hintStyle: TextStyles.greyLight.copyWith(letterSpacing: 0.2),
                 hintText: widget.hintText ?? '',
               ),
             ),

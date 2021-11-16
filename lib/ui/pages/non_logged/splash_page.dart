@@ -1,5 +1,5 @@
 import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/theme.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -8,7 +8,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mainColor,
+      backgroundColor: AppColors.mainColor,
       body: Container(
         width: double.infinity,
         child: Column(
@@ -17,8 +17,8 @@ class SplashPage extends StatelessWidget {
             Image.asset(Assets.logo, width: 59, height: 76),
             SizedBox(height: 50),
             Text('FUTUREJOB',
-                style: whiteTextStyle.copyWith(
-                    fontSize: 32, fontWeight: FontWeight.w600))
+                style:
+                    TextStyles.whiteSemiBold.copyWith(fontSize: FontSizes.s32))
           ],
         ),
       ),

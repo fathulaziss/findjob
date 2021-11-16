@@ -1,5 +1,5 @@
 import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -48,8 +48,10 @@ class CustomBottomNavBar extends StatelessWidget {
                   Text(
                     'Home',
                     style: (selectedIndex == 0)
-                        ? blackTextStyle.copyWith(fontSize: 10)
-                        : grayTextStyle.copyWith(fontSize: 10),
+                        ? TextStyles.blackLight
+                            .copyWith(fontSize: FontSizes.s10)
+                        : TextStyles.greyLight
+                            .copyWith(fontSize: FontSizes.s10),
                   )
                 ],
               ),
@@ -76,8 +78,10 @@ class CustomBottomNavBar extends StatelessWidget {
                   Text(
                     'Notification',
                     style: (selectedIndex == 1)
-                        ? blackTextStyle.copyWith(fontSize: 10)
-                        : grayTextStyle.copyWith(fontSize: 10),
+                        ? TextStyles.blackLight
+                            .copyWith(fontSize: FontSizes.s10)
+                        : TextStyles.greyLight
+                            .copyWith(fontSize: FontSizes.s10),
                   )
                 ],
               ),
@@ -104,8 +108,10 @@ class CustomBottomNavBar extends StatelessWidget {
                   Text(
                     'Favorite',
                     style: (selectedIndex == 2)
-                        ? blackTextStyle.copyWith(fontSize: 10)
-                        : grayTextStyle.copyWith(fontSize: 10),
+                        ? TextStyles.blackLight
+                            .copyWith(fontSize: FontSizes.s10)
+                        : TextStyles.greyLight
+                            .copyWith(fontSize: FontSizes.s10),
                   )
                 ],
               ),
@@ -132,8 +138,10 @@ class CustomBottomNavBar extends StatelessWidget {
                   Text(
                     'Profile',
                     style: (selectedIndex == 3)
-                        ? blackTextStyle.copyWith(fontSize: 10)
-                        : grayTextStyle.copyWith(fontSize: 10),
+                        ? TextStyles.blackLight
+                            .copyWith(fontSize: FontSizes.s10)
+                        : TextStyles.greyLight
+                            .copyWith(fontSize: FontSizes.s10),
                   )
                 ],
               ),

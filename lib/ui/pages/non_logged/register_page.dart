@@ -1,4 +1,5 @@
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/assets.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:findjob/ui/widgets/input_form_primary.dart';
 import 'package:flutter/material.dart';
@@ -54,9 +55,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'ex : Become to be Flutter Developer',
                 ),
                 ButtonPrimary(
-                  backgroundColor: mainColor,
-                  titleStyle: whiteTextStyle.copyWith(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                  backgroundColor: AppColors.mainColor,
+                  titleStyle: TextStyles.whiteMedium,
                   title: 'Sign Up',
                   onPressed: () {},
                 ),
@@ -69,10 +69,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         Colors.black.withOpacity(0.05)),
                     shadowColor: MaterialStateProperty.all(Colors.transparent),
                   ),
-                  child: Text(
-                    widget.titleBack ?? "",
-                    style: grayTextStyle.copyWith(fontSize: 14),
-                  ),
+                  child:
+                      Text(widget.titleBack ?? "", style: TextStyles.greyLight),
                 )
               ],
             ),
@@ -86,13 +84,10 @@ class _RegisterPageState extends State<RegisterPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Sign Up',
-            style: grayTextStyle.copyWith(
-                fontSize: 14, fontWeight: FontWeight.w400)),
+        Text('Sign Up', style: TextStyles.greyNormal),
         SizedBox(height: 2),
         Text('Begin New Journey',
-            style: blackTextStyle.copyWith(
-                fontSize: 20, fontWeight: FontWeight.w600)),
+            style: TextStyles.blackSemiBold.copyWith(fontSize: FontSizes.s20)),
         SizedBox(height: 10),
         Center(
             child: Image.asset(Assets.userDefault,

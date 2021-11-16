@@ -1,4 +1,4 @@
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class ButtonPrimary extends StatelessWidget {
@@ -37,10 +37,7 @@ class ButtonPrimary extends StatelessWidget {
           overlayColor: MaterialStateProperty.all(Colors.black12),
           shadowColor: MaterialStateProperty.all(Colors.transparent),
         ),
-        child: Text(title ?? '',
-            style: titleStyle ??
-                purpleTextStyle.copyWith(
-                    fontSize: 14, fontWeight: FontWeight.w500)),
+        child: Text(title ?? '', style: titleStyle ?? TextStyles.purpleMedium),
       ),
     );
   }

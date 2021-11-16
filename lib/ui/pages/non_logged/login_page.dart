@@ -1,4 +1,5 @@
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/assets.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/pages/logged/main_page.dart';
 import 'package:findjob/ui/pages/non_logged/register_page.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
@@ -43,9 +44,8 @@ class _LoginPageState extends State<LoginPage> {
                   obsecureText: true,
                 ),
                 ButtonPrimary(
-                  backgroundColor: mainColor,
-                  titleStyle: whiteTextStyle.copyWith(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                  backgroundColor: AppColors.mainColor,
+                  titleStyle: TextStyles.whiteMedium,
                   title: 'Sign In',
                   onPressed: () {
                     Get.to(() => MainPage(
@@ -62,19 +62,13 @@ class _LoginPageState extends State<LoginPage> {
                         Colors.black.withOpacity(0.05)),
                     shadowColor: MaterialStateProperty.all(Colors.transparent),
                   ),
-                  child: Text(
-                    "Create Account",
-                    style: grayTextStyle.copyWith(fontSize: 14),
-                  ),
+                  child: Text("Create Account", style: TextStyles.greyLight),
                 ),
                 InkWell(
                   onTap: () {
                     Get.back();
                   },
-                  child: Text(
-                    "Back",
-                    style: grayTextStyle.copyWith(fontSize: 14),
-                  ),
+                  child: Text("Back", style: TextStyles.greyLight),
                 )
               ],
             ),
@@ -88,13 +82,10 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Sign In',
-            style: grayTextStyle.copyWith(
-                fontSize: 14, fontWeight: FontWeight.w400)),
+        Text('Sign In', style: TextStyles.greyNormal),
         SizedBox(height: 2),
         Text('Build Your Career',
-            style: blackTextStyle.copyWith(
-                fontSize: 20, fontWeight: FontWeight.w600)),
+            style: TextStyles.blackSemiBold.copyWith(fontSize: FontSizes.s20)),
         SizedBox(height: 20),
         Center(
             child: Image.asset(Assets.imageLogin,

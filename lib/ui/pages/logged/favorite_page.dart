@@ -1,4 +1,4 @@
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -9,7 +9,7 @@ class FavoritePage extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Center(
-        child: Text("Like Page", style: blackTextStyle),
+        child: Text("Like Page", style: TextStyles.blackMedium),
       ),
     );
   }

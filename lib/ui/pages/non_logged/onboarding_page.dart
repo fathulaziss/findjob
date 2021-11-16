@@ -1,5 +1,5 @@
 import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/pages/non_logged/login_page.dart';
 import 'package:findjob/ui/pages/non_logged/register_page.dart';
 import 'package:findjob/ui/widgets/button_outlined.dart';
@@ -28,12 +28,10 @@ class OnBoardingPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Build Your Habbit\nto Get Future Career\nLike a Master',
-                      style: whiteTextStyle.copyWith(
-                          fontSize: 26, fontWeight: FontWeight.w400)),
+                      style: TextStyles.whiteNormal
+                          .copyWith(fontSize: FontSizes.s32)),
                   SizedBox(height: 20),
-                  Text('18.000 jobs available',
-                      style: whiteTextStyle.copyWith(
-                          fontSize: 14, fontWeight: FontWeight.w300))
+                  Text('18.000 jobs available', style: TextStyles.whiteLight)
                 ],
               ),
             ),

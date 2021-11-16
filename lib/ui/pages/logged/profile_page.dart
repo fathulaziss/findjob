@@ -1,4 +1,4 @@
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -9,7 +9,7 @@ class ProfilePage extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Center(
-        child: Text("Profile Page", style: blackTextStyle),
+        child: Text("Profile Page", style: TextStyles.blackMedium),
       ),
     );
   }

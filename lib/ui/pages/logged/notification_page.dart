@@ -1,4 +1,4 @@
-import 'package:findjob/shared/shared.dart';
+import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -9,7 +9,7 @@ class NotificationPage extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Center(
-        child: Text("Notification Page", style: blackTextStyle),
+        child: Text("Notification Page", style: TextStyles.blackMedium),
       ),
     );
   }
