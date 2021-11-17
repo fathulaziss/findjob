@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/pages/logged/main_page.dart';
 import 'package:findjob/ui/pages/non_logged/register_page.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
+import 'package:findjob/ui/widgets/input_form_email.dart';
 import 'package:findjob/ui/widgets/input_form_primary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,24 +20,32 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  String email = '';
+  bool isValidEmail = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+          padding: EdgeInsets.symmetric(
+              horizontal: Insets.med * 2, vertical: Insets.xs * 2.5),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 buildTitle(),
-                InputFormPrimary(
+                InputFormEmail(
                   controller: emailController,
-                  title: 'Email Address',
-                  hintText: 'jhony@example.com',
+                  email: (String value) {
+                    email = value;
+                  },
+                  isValid: (bool value) {
+                    isValidEmail = value;
+                    log('cek isValidEmail : $isValidEmail');
+                  },
                 ),
                 InputFormPrimary(
                   margin: EdgeInsets.only(bottom: 20),

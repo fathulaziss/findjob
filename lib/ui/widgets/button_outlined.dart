@@ -21,7 +21,7 @@ class ButtonOutlined extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: height ?? 45,
+      height: height ?? IconSizes.xl - 3,
       child: ElevatedButton(
         onPressed: () {
           onPressed!();
@@ -29,8 +29,9 @@ class ButtonOutlined extends StatelessWidget {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(66),
-              side: BorderSide(color: outlinedColor ?? Colors.white, width: 1),
+              borderRadius: BorderRadius.circular(Corners.lg * 8.25),
+              side: BorderSide(
+                  color: outlinedColor ?? AppColors.whiteColor, width: 1),
             ),
           ),
           backgroundColor: MaterialStateProperty.all(Colors.transparent),

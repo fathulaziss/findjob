@@ -14,8 +14,9 @@ class SplashPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(Assets.logo, width: 59, height: 76),
-            SizedBox(height: 50),
+            Image.asset(Assets.logo,
+                width: IconSizes.xl + 11, height: IconSizes.xxl + 16),
+            verticalSpace(Insets.xl * 2.5),
             Text('FUTUREJOB',
                 style:
                     TextStyles.whiteSemiBold.copyWith(fontSize: FontSizes.s32))

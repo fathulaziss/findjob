@@ -46,6 +46,15 @@ class IconSizes {
   static double get xxl => 60 * scale;
 }
 
+class Sizes {
+  static double get xs => 8 * scale;
+  static double get sm => 12 * scale;
+  static double get med => 20 * scale;
+  static double get lg => 32 * scale;
+  static double get xl => 48 * scale;
+  static double get xxl => 80 * scale;
+}
+
 class Corners {
   static double sm = 3 * scale;
   static BorderRadius smBorder = BorderRadius.all(smRadius);
@@ -66,6 +75,54 @@ class Corners {
   static double xxl = 24 * scale;
   static BorderRadius xxlBorder = BorderRadius.all(xxlRadius);
   static Radius xxlRadius = Radius.circular(xxl);
+}
+
+class BorderStyles {
+  static OutlineInputBorder enableTextField = OutlineInputBorder(
+    borderSide: BorderSide(color: Colors.transparent, width: 1),
+    borderRadius: Corners.xxlBorder,
+  );
+
+  static OutlineInputBorder focusTextField = OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.mainColor, width: 1),
+    borderRadius: Corners.xxlBorder,
+  );
+
+  static OutlineInputBorder disableTextField = OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.greyColor, width: 1),
+    borderRadius: Corners.xxlBorder,
+  );
+
+  static OutlineInputBorder errorTextField = OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.secondColor, width: 0.05),
+    borderRadius: Corners.xxlBorder,
+  );
+}
+
+InputDecoration inputDecoration(
+    {required String hintText, Widget? prefixIcon, Widget? suffixIcon}) {
+  return InputDecoration(
+    isDense: true,
+    filled: true,
+    fillColor: Color(0xFFF1F0F5),
+    border: BorderStyles.enableTextField,
+    focusedBorder: BorderStyles.focusTextField,
+    enabledBorder: BorderStyles.enableTextField,
+    errorBorder: BorderStyles.errorTextField,
+    disabledBorder: BorderStyles.disableTextField,
+    errorMaxLines: 5,
+    prefixIconConstraints:
+        BoxConstraints(minHeight: Sizes.lg, minWidth: Sizes.lg),
+    suffixIconConstraints:
+        BoxConstraints(minHeight: Sizes.lg, minWidth: Sizes.lg),
+    contentPadding:
+        EdgeInsets.symmetric(horizontal: Insets.xl, vertical: Insets.med),
+    hintStyle: TextStyles.greyLight
+        .copyWith(letterSpacing: 0.2, fontSize: FontSizes.s16),
+    hintText: hintText,
+    prefixIcon: prefixIcon,
+    suffixIcon: suffixIcon,
+  );
 }
 
 class TextStyles {

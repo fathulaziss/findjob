@@ -28,17 +28,17 @@ class _InputFormPrimaryState extends State<InputFormPrimary> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: widget.margin ?? EdgeInsets.only(bottom: 10),
+      margin: widget.margin ?? EdgeInsets.only(bottom: Insets.xs * 2.5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(widget.title ?? '', style: TextStyles.greyNormal),
-          SizedBox(height: 8),
+          verticalSpace(Insets.xs * 2),
           Container(
             width: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(Corners.med * 20),
                 color: Color(0xFFF1F0F5),
                 border: Border.all(
                     width: 1, color: widget.colorBorder ?? Colors.transparent)),
@@ -49,7 +49,7 @@ class _InputFormPrimaryState extends State<InputFormPrimary> {
               controller: widget.controller,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                contentPadding: EdgeInsets.symmetric(horizontal: Insets.xl),
                 hintStyle: TextStyles.greyLight.copyWith(letterSpacing: 0.2),
                 hintText: widget.hintText ?? '',
               ),

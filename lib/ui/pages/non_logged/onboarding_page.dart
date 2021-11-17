@@ -23,14 +23,17 @@ class OnBoardingPage extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              margin: EdgeInsets.only(top: 50, left: 30, right: 20),
+              margin: EdgeInsets.only(
+                  top: Insets.xl * 2.5,
+                  left: Insets.xl * 1.5,
+                  right: Insets.xl),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Build Your Habbit\nto Get Future Career\nLike a Master',
                       style: TextStyles.whiteNormal
                           .copyWith(fontSize: FontSizes.s32)),
-                  SizedBox(height: 20),
+                  verticalSpace(Insets.xl),
                   Text('18.000 jobs available', style: TextStyles.whiteLight)
                 ],
               ),
@@ -39,7 +42,7 @@ class OnBoardingPage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 80),
+                margin: EdgeInsets.symmetric(horizontal: Insets.xl * 4),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -49,14 +52,14 @@ class OnBoardingPage extends StatelessWidget {
                         Get.to(() => RegisterPage(titleBack: "Back"));
                       },
                     ),
-                    SizedBox(height: 16),
+                    verticalSpace(Insets.lg),
                     ButtonOutlined(
                       title: 'Sign In',
                       onPressed: () {
                         Get.to(() => LoginPage());
                       },
                     ),
-                    SizedBox(height: 50)
+                    verticalSpace(Insets.xl * 2.5),
                   ],
                 ),
               ),

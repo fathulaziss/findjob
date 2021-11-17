@@ -21,7 +21,7 @@ class ButtonPrimary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: height ?? 45,
+      height: height ?? IconSizes.xl - 3,
       child: ElevatedButton(
         onPressed: () {
           onPressed!();
@@ -29,11 +29,11 @@ class ButtonPrimary extends StatelessWidget {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(66),
+              borderRadius: BorderRadius.circular(Corners.lg * 8.25),
             ),
           ),
-          backgroundColor:
-              MaterialStateProperty.all(backgroundColor ?? Colors.white),
+          backgroundColor: MaterialStateProperty.all(
+              backgroundColor ?? AppColors.whiteColor),
           overlayColor: MaterialStateProperty.all(Colors.black12),
           shadowColor: MaterialStateProperty.all(Colors.transparent),
         ),
