@@ -16,8 +16,10 @@ class AppColors {
   static Color mainColor = Color(0xFF4141A4);
   static Color secondColor = Color(0xFFFD4F56);
   static Color whiteColor = Color(0xFFFFFFFF);
+  static Color whiteColor2 = Color(0xFFF1F0F5);
   static Color blackColor = Color(0xFF272C2F);
   static Color greyColor = Color(0xFFB3B5C4);
+  static Color greyColor2 = Color(0xFFC7C7C7);
 }
 
 class FontSizes {
@@ -94,7 +96,12 @@ class BorderStyles {
   );
 
   static OutlineInputBorder errorTextField = OutlineInputBorder(
-    borderSide: BorderSide(color: AppColors.secondColor, width: 0.05),
+    borderSide: BorderSide(color: AppColors.secondColor, width: 1),
+    borderRadius: Corners.xxlBorder,
+  );
+
+  static OutlineInputBorder focusedErrorBorder = OutlineInputBorder(
+    borderSide: BorderSide(color: AppColors.secondColor, width: 1),
     borderRadius: Corners.xxlBorder,
   );
 }
@@ -104,12 +111,13 @@ InputDecoration inputDecoration(
   return InputDecoration(
     isDense: true,
     filled: true,
-    fillColor: Color(0xFFF1F0F5),
+    fillColor: AppColors.whiteColor2,
     border: BorderStyles.enableTextField,
     focusedBorder: BorderStyles.focusTextField,
     enabledBorder: BorderStyles.enableTextField,
     errorBorder: BorderStyles.errorTextField,
     disabledBorder: BorderStyles.disableTextField,
+    focusedErrorBorder: BorderStyles.focusedErrorBorder,
     errorMaxLines: 5,
     prefixIconConstraints:
         BoxConstraints(minHeight: Sizes.lg, minWidth: Sizes.lg),
@@ -117,8 +125,10 @@ InputDecoration inputDecoration(
         BoxConstraints(minHeight: Sizes.lg, minWidth: Sizes.lg),
     contentPadding:
         EdgeInsets.symmetric(horizontal: Insets.xl, vertical: Insets.med),
-    hintStyle: TextStyles.greyLight
-        .copyWith(letterSpacing: 0.2, fontSize: FontSizes.s16),
+    hintStyle: TextStyles.greyLight.copyWith(
+        letterSpacing: 0.2,
+        fontSize: FontSizes.s16,
+        color: AppColors.greyColor2),
     hintText: hintText,
     prefixIcon: prefixIcon,
     suffixIcon: suffixIcon,

@@ -24,15 +24,13 @@ class OnBoardingPage extends StatelessWidget {
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(
-                  top: Insets.xl * 2.5,
-                  left: Insets.xl * 1.5,
-                  right: Insets.xl),
+                  top: Insets.xl * 2.5, left: Insets.xl, right: Insets.xl),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Build Your Habbit\nto Get Future Career\nLike a Master',
+                  Text('Mastering Your Habbit\nto Get Future Career',
                       style: TextStyles.whiteNormal
-                          .copyWith(fontSize: FontSizes.s32)),
+                          .copyWith(fontSize: FontSizes.s24)),
                   verticalSpace(Insets.xl),
                   Text('18.000 jobs available', style: TextStyles.whiteLight)
                 ],

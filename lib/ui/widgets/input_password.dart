@@ -1,21 +1,21 @@
+import 'package:findjob/shared/regex.dart';
 import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class InputFormEmail extends StatefulWidget {
+class InputPassword extends StatefulWidget {
+  final String label;
+  final String hintText;
   final TextEditingController controller;
-  final ValueSetter<String> email;
   final ValueSetter<bool> isValid;
-  final Color? colorBorder;
   final EdgeInsetsGeometry? margin;
   final String? Function(String?)? validate;
   final String? Function(String?)? onChange;
 
-  const InputFormEmail({
+  const InputPassword({
+    required this.label,
+    required this.hintText,
     required this.controller,
-    required this.email,
     required this.isValid,
-    this.colorBorder,
     this.margin,
     this.validate,
     this.onChange,
@@ -23,10 +23,17 @@ class InputFormEmail extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _InputFormEmailState createState() => _InputFormEmailState();
+  _InputPasswordState createState() => _InputPasswordState();
 }
 
-class _InputFormEmailState extends State<InputFormEmail> {
+class _InputPasswordState extends State<InputPassword> {
+  bool obsecureText = true;
+  void onTap() {
+    setState(() {
+      obsecureText = !obsecureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,14 +42,14 @@ class _InputFormEmailState extends State<InputFormEmail> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Email Address',
+          Text(widget.label,
               style: TextStyles.greyNormal.copyWith(fontSize: FontSizes.s16)),
           verticalSpace(Insets.xs * 2),
           TextFormField(
             style: TextStyles.purpleNormal.copyWith(fontSize: FontSizes.s16),
             autofocus: true,
-            obscureText: false,
-            keyboardType: TextInputType.emailAddress,
+            obscureText: obsecureText,
+            keyboardType: TextInputType.text,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             textCapitalization: TextCapitalization.none,
             enableInteractiveSelection: true,
@@ -51,16 +58,34 @@ class _InputFormEmailState extends State<InputFormEmail> {
             onChanged: widget.onChange,
             validator: widget.validate ??
                 (value) {
-                  if (!GetUtils.isEmail(value.toString())) {
+                  if (!isValidPassword(password: value.toString())) {
                     widget.isValid(false);
-                    widget.email('');
-                    return 'Email format is not correct';
+                    return '- Password minimum 8 characters\n' +
+                        '- Consists of uppercases, lowercases, and numbers';
                   }
-                  widget.email(value.toString());
                   widget.isValid(true);
                   return null;
                 },
-            decoration: inputDecoration(hintText: 'jhony@example.com'),
+            decoration: inputDecoration(
+              hintText: widget.hintText,
+              suffixIcon: Padding(
+                padding: EdgeInsets.only(right: Insets.lg),
+                child: InkWell(
+                  child: obsecureText
+                      ? Icon(
+                          Icons.visibility_off,
+                          size: IconSizes.med,
+                          color: AppColors.mainColor,
+                        )
+                      : Icon(
+                          Icons.visibility,
+                          size: IconSizes.med,
+                          color: AppColors.mainColor,
+                        ),
+                  onTap: onTap,
+                ),
+              ),
+            ),
           )
         ],
       ),

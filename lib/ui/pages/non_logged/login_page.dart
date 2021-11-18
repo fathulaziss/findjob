@@ -5,8 +5,8 @@ import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/pages/logged/main_page.dart';
 import 'package:findjob/ui/pages/non_logged/register_page.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
-import 'package:findjob/ui/widgets/input_form_email.dart';
-import 'package:findjob/ui/widgets/input_form_primary.dart';
+import 'package:findjob/ui/widgets/input_email.dart';
+import 'package:findjob/ui/widgets/input_password.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +21,9 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   String email = '';
+  String password = '';
   bool isValidEmail = false;
+  bool isValidPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,9 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 buildTitle(),
-                InputFormEmail(
+                InputEmail(
+                  label: 'Email Address',
+                  hintText: 'Email Address',
                   controller: emailController,
                   email: (String value) {
                     email = value;
@@ -47,21 +51,35 @@ class _LoginPageState extends State<LoginPage> {
                     log('cek isValidEmail : $isValidEmail');
                   },
                 ),
-                InputFormPrimary(
-                  margin: EdgeInsets.only(bottom: 20),
+                InputPassword(
+                  label: "Password",
+                  hintText: "Password",
                   controller: passwordController,
-                  title: 'Password',
-                  hintText: 'Password',
-                  obsecureText: true,
+                  validate: (value) {
+                    if (value.toString().isEmpty) {
+                      isValidPassword = false;
+                      log('cek isValidPassword : $isValidPassword');
+                      return "Password can't be empty";
+                    } else {
+                      isValidPassword = true;
+                      log('cek isValidPassword : $isValidPassword');
+                      return null;
+                    }
+                  },
+                  onChange: (value) {
+                    setState(() {
+                      password = value!;
+                    });
+                  },
+                  isValid: (bool value) {},
                 ),
+                verticalSpace(Insets.xl),
                 ButtonPrimary(
                   backgroundColor: AppColors.mainColor,
                   titleStyle: TextStyles.whiteMedium,
                   title: 'Sign In',
                   onPressed: () {
-                    Get.to(() => MainPage(
-                          initial: 0,
-                        ));
+                    Get.to(() => MainPage(initial: 0));
                   },
                 ),
                 TextButton(
@@ -94,14 +112,14 @@ class _LoginPageState extends State<LoginPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Sign In', style: TextStyles.greyNormal),
-        SizedBox(height: 2),
+        verticalSpace(Insets.xs / 2),
         Text('Build Your Career',
             style: TextStyles.blackSemiBold.copyWith(fontSize: FontSizes.s20)),
-        SizedBox(height: 20),
+        verticalSpace(Insets.xl),
         Center(
             child: Image.asset(Assets.imageLogin,
                 width: MediaQuery.of(context).size.width * 0.55)),
-        SizedBox(height: 20),
+        verticalSpace(Insets.xl),
       ],
     );
   }

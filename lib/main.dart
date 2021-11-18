@@ -11,10 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      // home: SplashPage(),
-      home: OnBoardingPage(),
-      // home: LoginPage(),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: GetMaterialApp(
+        // home: SplashPage(),
+        home: OnBoardingPage(),
+        // home: LoginPage(),
+      ),
     );
   }
 }
