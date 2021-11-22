@@ -1,7 +1,7 @@
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
-import 'package:findjob/ui/widgets/input_form_primary.dart';
+import 'package:findjob/ui/widgets/input_primary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,26 +32,25 @@ class _PageRegisterState extends State<PageRegister> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 buildTitle(),
-                InputFormPrimary(
+                InputPrimary(
                   controller: nameController,
-                  title: 'Full Name',
+                  label: 'Full Name',
                   hintText: 'ex : Muhamad Fathul Azis',
                 ),
-                InputFormPrimary(
+                InputPrimary(
                   controller: emailController,
-                  title: 'Email Address',
+                  label: 'Email Address',
                   hintText: 'jhony@example.com',
                 ),
-                InputFormPrimary(
+                InputPrimary(
                   controller: passwordController,
-                  title: 'Password',
+                  label: 'Password',
                   hintText: 'Password',
-                  obsecureText: true,
                 ),
-                InputFormPrimary(
+                InputPrimary(
                   controller: goalController,
                   margin: EdgeInsets.only(bottom: 20),
-                  title: 'Your Goal',
+                  label: 'Your Goal',
                   hintText: 'ex : Become to be Flutter Developer',
                 ),
                 ButtonPrimary(
