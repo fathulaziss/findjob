@@ -10,144 +10,142 @@ class NavBarBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 70,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 5,
-              offset: Offset(0, 5))
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          InkWell(
-            onTap: () {
-              if (onTap != null) {
-                onTap!(0);
-              }
-            },
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 24,
-                    height: 24,
-                    margin: EdgeInsets.only(bottom: 5),
-                    alignment: Alignment.center,
-                    child: (selectedIndex == 0)
-                        ? Image.asset(Assets.iconHomeActive)
-                        : Image.asset(Assets.iconHomeInActive),
-                  ),
-                  Text(
-                    'Home',
-                    style: (selectedIndex == 0)
-                        ? TextStyles.blackLight
-                            .copyWith(fontSize: FontSizes.s10)
-                        : TextStyles.greyLight
-                            .copyWith(fontSize: FontSizes.s10),
-                  )
-                ],
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        width: double.infinity,
+        height: Sizes.med * 3.5,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 5,
+                blurRadius: 5,
+                offset: Offset(0, 5))
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            InkWell(
+              onTap: () {
+                if (onTap != null) {
+                  onTap!(0);
+                }
+              },
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    (selectedIndex == 0)
+                        ? Image.asset(Assets.iconHomeActive,
+                            width: IconSizes.med)
+                        : Image.asset(Assets.iconHomeInActive,
+                            width: IconSizes.med),
+                    verticalSpace(Insets.xs * 1.25),
+                    Text(
+                      'Home',
+                      style: (selectedIndex == 0)
+                          ? TextStyles.blackBold
+                              .copyWith(fontSize: FontSizes.s12)
+                          : TextStyles.greyLight.copyWith(
+                              fontSize: FontSizes.s12,
+                              color: AppColors.greyColor2),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          InkWell(
-            onTap: () {
-              if (onTap != null) {
-                onTap!(1);
-              }
-            },
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width: 24,
-                      height: 24,
-                      margin: EdgeInsets.only(bottom: 5),
-                      alignment: Alignment.center,
-                      child: (selectedIndex == 1)
-                          ? Image.asset(Assets.iconNotificationActive)
-                          : Image.asset(Assets.iconNotificationInActive)),
-                  Text(
-                    'Notification',
-                    style: (selectedIndex == 1)
-                        ? TextStyles.blackLight
-                            .copyWith(fontSize: FontSizes.s10)
-                        : TextStyles.greyLight
-                            .copyWith(fontSize: FontSizes.s10),
-                  )
-                ],
+            InkWell(
+              onTap: () {
+                if (onTap != null) {
+                  onTap!(1);
+                }
+              },
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    (selectedIndex == 1)
+                        ? Image.asset(Assets.iconNotificationActive,
+                            width: IconSizes.med)
+                        : Image.asset(Assets.iconNotificationInActive,
+                            width: IconSizes.med),
+                    verticalSpace(Insets.xs * 1.25),
+                    Text(
+                      'Notification',
+                      style: (selectedIndex == 1)
+                          ? TextStyles.blackBold
+                              .copyWith(fontSize: FontSizes.s12)
+                          : TextStyles.greyLight.copyWith(
+                              fontSize: FontSizes.s12,
+                              color: AppColors.greyColor2),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          InkWell(
-            onTap: () {
-              if (onTap != null) {
-                onTap!(2);
-              }
-            },
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width: 24,
-                      height: 24,
-                      margin: EdgeInsets.only(bottom: 5),
-                      alignment: Alignment.center,
-                      child: (selectedIndex == 2)
-                          ? Image.asset(Assets.iconLikeActive)
-                          : Image.asset(Assets.iconLikeInActive)),
-                  Text(
-                    'Favorite',
-                    style: (selectedIndex == 2)
-                        ? TextStyles.blackLight
-                            .copyWith(fontSize: FontSizes.s10)
-                        : TextStyles.greyLight
-                            .copyWith(fontSize: FontSizes.s10),
-                  )
-                ],
+            InkWell(
+              onTap: () {
+                if (onTap != null) {
+                  onTap!(2);
+                }
+              },
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    (selectedIndex == 2)
+                        ? Image.asset(Assets.iconLikeActive,
+                            width: IconSizes.med)
+                        : Image.asset(Assets.iconLikeInActive,
+                            width: IconSizes.med),
+                    verticalSpace(Insets.xs * 1.25),
+                    Text(
+                      'Favorite',
+                      style: (selectedIndex == 2)
+                          ? TextStyles.blackBold
+                              .copyWith(fontSize: FontSizes.s12)
+                          : TextStyles.greyLight.copyWith(
+                              fontSize: FontSizes.s12,
+                              color: AppColors.greyColor2),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          InkWell(
-            onTap: () {
-              if (onTap != null) {
-                onTap!(3);
-              }
-            },
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width: 24,
-                      height: 24,
-                      margin: EdgeInsets.only(bottom: 5),
-                      alignment: Alignment.center,
-                      child: (selectedIndex == 3)
-                          ? Image.asset(Assets.iconProfileActive)
-                          : Image.asset(Assets.iconProfileInActive)),
-                  Text(
-                    'Profile',
-                    style: (selectedIndex == 3)
-                        ? TextStyles.blackLight
-                            .copyWith(fontSize: FontSizes.s10)
-                        : TextStyles.greyLight
-                            .copyWith(fontSize: FontSizes.s10),
-                  )
-                ],
+            InkWell(
+              onTap: () {
+                if (onTap != null) {
+                  onTap!(3);
+                }
+              },
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    (selectedIndex == 3)
+                        ? Image.asset(Assets.iconProfileActive,
+                            width: IconSizes.med)
+                        : Image.asset(Assets.iconProfileInActive,
+                            width: IconSizes.med),
+                    verticalSpace(Insets.xs * 1.25),
+                    Text(
+                      'Profile',
+                      style: (selectedIndex == 3)
+                          ? TextStyles.blackBold
+                              .copyWith(fontSize: FontSizes.s12)
+                          : TextStyles.greyLight.copyWith(
+                              fontSize: FontSizes.s12,
+                              color: AppColors.greyColor2),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

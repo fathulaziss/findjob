@@ -47,17 +47,14 @@ class _PageMainState extends State<PageMain> {
                 PageProfile()
               ],
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: NavBarBottom(
-                selectedIndex: selectedPage,
-                onTap: (pageIndex) {
-                  setState(() {
-                    selectedPage = pageIndex;
-                  });
-                  pageController.jumpToPage(selectedPage!);
-                },
-              ),
+            NavBarBottom(
+              selectedIndex: selectedPage,
+              onTap: (pageIndex) {
+                setState(() {
+                  selectedPage = pageIndex;
+                });
+                pageController.jumpToPage(selectedPage!);
+              },
             )
           ],
         ),
