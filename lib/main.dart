@@ -1,4 +1,4 @@
-import 'package:findjob/ui/pages/non_logged/onboarding_page.dart';
+import 'package:findjob/ui/pages/non_logged/page_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -14,9 +14,7 @@ class MyApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: GetMaterialApp(
-        // home: SplashPage(),
-        home: OnBoardingPage(),
-        // home: LoginPage(),
+        home: PageSplashScreen(),
       ),
     );
   }
