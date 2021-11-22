@@ -5,18 +5,18 @@ import 'package:findjob/ui/pages/logged/page_profile.dart';
 import 'package:findjob/ui/widgets/navbar_bottom.dart';
 import 'package:flutter/material.dart';
 
-class MainPage extends StatefulWidget {
+class PageMain extends StatefulWidget {
   final int initial;
-  const MainPage({
+  const PageMain({
     required this.initial,
     Key? key,
   }) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  _PageMainState createState() => _PageMainState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _PageMainState extends State<PageMain> {
   PageController pageController = PageController();
   int? selectedPage;
 

@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/pages/logged/main_page.dart';
+import 'package:findjob/ui/pages/logged/page_main.dart';
 import 'package:findjob/ui/pages/non_logged/page_register.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:findjob/ui/widgets/input_email.dart';
@@ -25,6 +25,15 @@ class _PageLoginState extends State<PageLogin> {
   bool isValidEmail = false;
   bool isValidPassword = false;
 
+  validateForm() {
+    if (isValidEmail && isValidPassword) {
+      Get.to(() => PageMain(initial: 0));
+    } else {
+      Get.snackbar('Info', 'Input your Email and Password with correct',
+          backgroundColor: Colors.yellow, colorText: AppColors.blackColor);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +41,7 @@ class _PageLoginState extends State<PageLogin> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: Insets.med * 2, vertical: Insets.xs * 2.5),
+              horizontal: Insets.med * 2, vertical: Insets.xl * 1.5),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -79,7 +88,7 @@ class _PageLoginState extends State<PageLogin> {
                   titleStyle: TextStyles.whiteMedium,
                   title: 'Sign In',
                   onPressed: () {
-                    Get.to(() => MainPage(initial: 0));
+                    validateForm();
                   },
                 ),
                 TextButton(
@@ -118,7 +127,7 @@ class _PageLoginState extends State<PageLogin> {
         verticalSpace(Insets.xl),
         Center(
             child: Image.asset(Assets.imageLogin,
-                width: MediaQuery.of(context).size.width * 0.55)),
+                width: IconSizes.xxl * 4.35, height: IconSizes.xxl * 4)),
         verticalSpace(Insets.xl),
       ],
     );

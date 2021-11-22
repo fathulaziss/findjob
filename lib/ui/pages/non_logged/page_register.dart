@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
+import 'package:findjob/ui/pages/logged/page_main.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
+import 'package:findjob/ui/widgets/input_email.dart';
+import 'package:findjob/ui/widgets/input_password.dart';
 import 'package:findjob/ui/widgets/input_primary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,13 +24,32 @@ class _PageRegisterState extends State<PageRegister> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController goalController = TextEditingController();
+  String name = '';
+  String email = '';
+  String password = '';
+  String goal = '';
+  bool isValidName = false;
+  bool isValidEmail = false;
+  bool isValidPassword = false;
+  bool isValidGoal = false;
+
+  validateForm() {
+    if (isValidName && isValidEmail && isValidPassword && isValidGoal) {
+      Get.to(() => PageMain(initial: 0));
+    } else {
+      Get.snackbar('Info', 'Please complete form with correct',
+          backgroundColor: Colors.yellow, colorText: AppColors.blackColor);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+          padding: EdgeInsets.symmetric(
+              horizontal: Insets.med * 2, vertical: Insets.xl * 1.5),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -35,29 +59,78 @@ class _PageRegisterState extends State<PageRegister> {
                 InputPrimary(
                   controller: nameController,
                   label: 'Full Name',
-                  hintText: 'ex : Muhamad Fathul Azis',
+                  hintText: 'Full Name',
+                  onChange: (value) {
+                    setState(() {
+                      name = value!;
+                    });
+                  },
+                  validate: (value) {
+                    if (value.toString().isEmpty) {
+                      isValidName = false;
+                      log('cek isValidName : $isValidName');
+                      return "Full Name can't be empty";
+                    } else {
+                      isValidName = true;
+                      log('cek isValidName : $isValidName');
+                      return null;
+                    }
+                  },
                 ),
-                InputPrimary(
+                InputEmail(
                   controller: emailController,
                   label: 'Email Address',
-                  hintText: 'jhony@example.com',
+                  hintText: 'Email Address',
+                  email: (String value) {
+                    email = value;
+                  },
+                  isValid: (bool value) {
+                    isValidEmail = value;
+                    log('cek isValidEmail : $isValidEmail');
+                  },
                 ),
-                InputPrimary(
+                InputPassword(
                   controller: passwordController,
                   label: 'Password',
                   hintText: 'Password',
+                  onChange: (value) {
+                    setState(() {
+                      password = value!;
+                    });
+                  },
+                  isValid: (bool value) {
+                    isValidPassword = value;
+                  },
                 ),
                 InputPrimary(
                   controller: goalController,
                   margin: EdgeInsets.only(bottom: 20),
                   label: 'Your Goal',
                   hintText: 'ex : Become to be Flutter Developer',
+                  onChange: (value) {
+                    setState(() {
+                      goal = value!;
+                    });
+                  },
+                  validate: (value) {
+                    if (value.toString().isEmpty) {
+                      isValidGoal = false;
+                      log('cek isValidGoal : $isValidGoal');
+                      return "Goal can't be empty";
+                    } else {
+                      isValidGoal = true;
+                      log('cek isValidGoal : $isValidGoal');
+                      return null;
+                    }
+                  },
                 ),
                 ButtonPrimary(
                   backgroundColor: AppColors.mainColor,
                   titleStyle: TextStyles.whiteMedium,
                   title: 'Sign Up',
-                  onPressed: () {},
+                  onPressed: () {
+                    validateForm();
+                  },
                 ),
                 TextButton(
                   onPressed: () {
@@ -84,14 +157,13 @@ class _PageRegisterState extends State<PageRegister> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('Sign Up', style: TextStyles.greyNormal),
-        SizedBox(height: 2),
+        verticalSpace(Insets.xs / 2),
         Text('Begin New Journey',
             style: TextStyles.blackSemiBold.copyWith(fontSize: FontSizes.s20)),
-        SizedBox(height: 10),
+        verticalSpace(Insets.lg),
         Center(
-            child: Image.asset(Assets.userDefault,
-                width: MediaQuery.of(context).size.width * 0.25)),
-        SizedBox(height: 10),
+            child: Image.asset(Assets.userDefault, width: IconSizes.xxl * 2)),
+        verticalSpace(Insets.lg),
       ],
     );
   }
