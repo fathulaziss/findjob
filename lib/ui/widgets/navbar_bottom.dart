@@ -2,11 +2,11 @@ import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomBottomNavBar extends StatelessWidget {
+class NavBarBottom extends StatelessWidget {
   final int? selectedIndex;
   final Function(int index)? onTap;
 
-  CustomBottomNavBar({this.selectedIndex, this.onTap});
+  NavBarBottom({this.selectedIndex, this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/pages/non_logged/login_page.dart';
-import 'package:findjob/ui/pages/non_logged/register_page.dart';
+import 'package:findjob/ui/pages/non_logged/page_login.dart';
+import 'package:findjob/ui/pages/non_logged/page_register.dart';
 import 'package:findjob/ui/widgets/button_outlined.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class PageOnBoarding extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Mastering Your Habbit\nto Get Future Career',
+                  Text('Mastering\nYour Habbit to\nGet Future Career',
                       style: TextStyles.whiteNormal
                           .copyWith(fontSize: FontSizes.s24)),
                   verticalSpace(Insets.xl),
@@ -47,14 +47,14 @@ class PageOnBoarding extends StatelessWidget {
                     ButtonPrimary(
                       title: 'Get Started',
                       onPressed: () {
-                        Get.to(() => RegisterPage(titleBack: "Back"));
+                        Get.to(() => PageRegister(titleBack: "Back"));
                       },
                     ),
                     verticalSpace(Insets.lg),
                     ButtonOutlined(
                       title: 'Sign In',
                       onPressed: () {
-                        Get.to(() => LoginPage());
+                        Get.to(() => PageLogin());
                       },
                     ),
                     verticalSpace(Insets.xl * 2.5),

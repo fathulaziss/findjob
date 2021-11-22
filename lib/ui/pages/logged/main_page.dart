@@ -1,8 +1,8 @@
-import 'package:findjob/ui/pages/logged/home_page.dart';
-import 'package:findjob/ui/pages/logged/favorite_page.dart';
-import 'package:findjob/ui/pages/logged/notification_page.dart';
-import 'package:findjob/ui/pages/logged/profile_page.dart';
-import 'package:findjob/ui/widgets/custom_bottom_navbar.dart';
+import 'package:findjob/ui/pages/logged/page_home.dart';
+import 'package:findjob/ui/pages/logged/page_favorite.dart';
+import 'package:findjob/ui/pages/logged/page_notification.dart';
+import 'package:findjob/ui/pages/logged/page_profile.dart';
+import 'package:findjob/ui/widgets/navbar_bottom.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -41,15 +41,15 @@ class _MainPageState extends State<MainPage> {
                 });
               },
               children: [
-                HomePage(),
-                NotificationPage(),
-                FavoritePage(),
-                ProfilePage()
+                PageHome(),
+                PageNotification(),
+                PageFavorite(),
+                PageProfile()
               ],
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: CustomBottomNavBar(
+              child: NavBarBottom(
                 selectedIndex: selectedPage,
                 onTap: (pageIndex) {
                   setState(() {

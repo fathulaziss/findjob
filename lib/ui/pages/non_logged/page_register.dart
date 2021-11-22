@@ -5,16 +5,16 @@ import 'package:findjob/ui/widgets/input_form_primary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RegisterPage extends StatefulWidget {
+class PageRegister extends StatefulWidget {
   final String? titleBack;
 
-  const RegisterPage({Key? key, this.titleBack}) : super(key: key);
+  const PageRegister({Key? key, this.titleBack}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _PageRegisterState createState() => _PageRegisterState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _PageRegisterState extends State<PageRegister> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

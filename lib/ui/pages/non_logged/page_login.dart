@@ -3,21 +3,21 @@ import 'dart:developer';
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/pages/logged/main_page.dart';
-import 'package:findjob/ui/pages/non_logged/register_page.dart';
+import 'package:findjob/ui/pages/non_logged/page_register.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:findjob/ui/widgets/input_email.dart';
 import 'package:findjob/ui/widgets/input_password.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class PageLogin extends StatefulWidget {
+  const PageLogin({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _PageLoginState createState() => _PageLoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _PageLoginState extends State<PageLogin> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   String email = '';
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Get.to(() => RegisterPage(titleBack: "Back to Sign In"));
+                    Get.to(() => PageRegister(titleBack: "Back to Sign In"));
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.all(
