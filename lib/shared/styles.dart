@@ -27,6 +27,7 @@ class FontSizes {
   static double get s12 => 12 * scale;
   static double get s14 => 14 * scale;
   static double get s16 => 16 * scale;
+  static double get s18 => 18 * scale;
   static double get s20 => 20 * scale;
   static double get s24 => 24 * scale;
   static double get s32 => 32 * scale;
@@ -222,23 +223,23 @@ class TextStyles {
       fontSize: FontSizes.s14);
 
   static TextStyle greyLight = GoogleFonts.poppins().copyWith(
-      color: AppColors.blackColor,
+      color: AppColors.greyColor,
       fontWeight: FontWeight.w300,
       fontSize: FontSizes.s14);
   static TextStyle greyNormal = GoogleFonts.poppins().copyWith(
-      color: AppColors.blackColor,
+      color: AppColors.greyColor,
       fontWeight: FontWeight.w400,
       fontSize: FontSizes.s14);
   static TextStyle greyMedium = GoogleFonts.poppins().copyWith(
-      color: AppColors.blackColor,
+      color: AppColors.greyColor,
       fontWeight: FontWeight.w500,
       fontSize: FontSizes.s14);
   static TextStyle greySemiBold = GoogleFonts.poppins().copyWith(
-      color: AppColors.blackColor,
+      color: AppColors.greyColor,
       fontWeight: FontWeight.w600,
       fontSize: FontSizes.s14);
   static TextStyle greyBold = GoogleFonts.poppins().copyWith(
-      color: AppColors.blackColor,
+      color: AppColors.greyColor,
       fontWeight: FontWeight.w700,
       fontSize: FontSizes.s14);
 }
