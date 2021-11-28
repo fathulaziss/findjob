@@ -6,10 +6,12 @@ class CardCategories extends StatelessWidget {
   final String image;
   final double elevation;
   final EdgeInsets margin;
+  final Function() onTap;
 
   const CardCategories({
     required this.title,
     required this.image,
+    required this.onTap,
     this.elevation = 1,
     this.margin = EdgeInsets.zero,
     Key? key,
@@ -17,24 +19,28 @@ class CardCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: margin,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(Corners.xl),
-        side: BorderSide.none,
-      ),
-      elevation: elevation,
-      child: Container(
-        width: IconSizes.xxl * 2.5,
-        height: IconSizes.xxl * 3.3,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Corners.xl),
-            image: DecorationImage(image: AssetImage(image))),
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: EdgeInsets.only(left: Insets.lg, bottom: Insets.lg),
-          child: Text(title,
-              style: TextStyles.whiteMedium.copyWith(fontSize: FontSizes.s18)),
+    return InkWell(
+      onTap: onTap,
+      child: Card(
+        margin: margin,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Corners.xl),
+          side: BorderSide.none,
+        ),
+        elevation: elevation,
+        child: Container(
+          width: IconSizes.xxl * 2.5,
+          height: IconSizes.xxl * 3.3,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(Corners.xl),
+              image: DecorationImage(image: AssetImage(image))),
+          alignment: Alignment.bottomLeft,
+          child: Padding(
+            padding: EdgeInsets.only(left: Insets.lg, bottom: Insets.lg),
+            child: Text(title,
+                style:
+                    TextStyles.whiteMedium.copyWith(fontSize: FontSizes.s18)),
+          ),
         ),
       ),
     );

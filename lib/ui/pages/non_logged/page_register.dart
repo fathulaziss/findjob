@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/pages/logged/page_main.dart';
+import 'package:findjob/ui/pages/non_logged/page_login.dart';
 import 'package:findjob/ui/widgets/button_primary.dart';
 import 'package:findjob/ui/widgets/input_email.dart';
 import 'package:findjob/ui/widgets/input_password.dart';
@@ -35,7 +35,7 @@ class _PageRegisterState extends State<PageRegister> {
 
   validateForm() {
     if (isValidName && isValidEmail && isValidPassword && isValidGoal) {
-      Get.to(() => PageMain(initial: 0));
+      Get.to(() => PageLogin());
     } else {
       Get.snackbar('Info', 'Please complete form with correct',
           backgroundColor: Colors.yellow, colorText: AppColors.blackColor);
