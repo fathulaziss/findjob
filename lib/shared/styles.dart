@@ -20,6 +20,7 @@ class AppColors {
   static Color blackColor = Color(0xFF272C2F);
   static Color greyColor = Color(0xFFB3B5C4);
   static Color greyColor2 = Color(0xFFC7C7C7);
+  static Color greyColor3 = Color(0xFFECEDF1);
 }
 
 class FontSizes {
