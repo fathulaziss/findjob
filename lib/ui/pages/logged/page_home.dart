@@ -1,6 +1,7 @@
 import 'package:findjob/model/model_category.dart';
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
+import 'package:findjob/ui/pages/logged/page_category_detail.dart';
 import 'package:findjob/ui/widgets/card_categories.dart';
 import 'package:findjob/ui/widgets/card_jobs.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,9 @@ class _PageHomeState extends State<PageHome> {
                         child: CardCategories(
                           margin: EdgeInsets.only(
                               left: Insets.med, right: Insets.sm),
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => PageCategoryDetail());
+                          },
                           title: listCategory[index].title,
                           image: listCategory[index].image,
                         ),
