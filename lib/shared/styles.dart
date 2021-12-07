@@ -21,6 +21,7 @@ class AppColors {
   static Color greyColor = Color(0xFFB3B5C4);
   static Color greyColor2 = Color(0xFFC7C7C7);
   static Color greyColor3 = Color(0xFFECEDF1);
+  static Color greyColor4 = Color(0xFFA2A6B4);
 }
 
 class FontSizes {

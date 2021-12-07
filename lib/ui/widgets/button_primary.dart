@@ -7,6 +7,7 @@ class ButtonPrimary extends StatelessWidget {
   final String? title;
   final TextStyle? titleStyle;
   final Function? onPressed;
+  final EdgeInsets? margin;
 
   const ButtonPrimary({
     this.height,
@@ -14,6 +15,7 @@ class ButtonPrimary extends StatelessWidget {
     this.title,
     this.titleStyle,
     required this.onPressed,
+    this.margin,
     Key? key,
   }) : super(key: key);
 
@@ -22,6 +24,7 @@ class ButtonPrimary extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height ?? IconSizes.xl - 3,
+      margin: margin ?? EdgeInsets.zero,
       child: ElevatedButton(
         onPressed: () {
           onPressed!();

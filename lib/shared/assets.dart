@@ -23,3 +23,7 @@ class Assets {
   static String logoInstagram = 'assets/logos/logo_instagram.png';
   static String logoFacebook = 'assets/logos/logo_facebook.png';
 }
+
+class AssetIcons {
+  static String iconDot = 'assets/icons/icon_dot.png';
+}

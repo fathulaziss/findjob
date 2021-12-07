@@ -2,6 +2,7 @@ import 'package:findjob/model/model_category.dart';
 import 'package:findjob/shared/assets.dart';
 import 'package:findjob/shared/styles.dart';
 import 'package:findjob/ui/pages/logged/page_category_detail.dart';
+import 'package:findjob/ui/pages/logged/page_job_detail.dart';
 import 'package:findjob/ui/widgets/card_categories.dart';
 import 'package:findjob/ui/widgets/card_jobs.dart';
 import 'package:flutter/material.dart';
@@ -81,14 +82,19 @@ class _PageHomeState extends State<PageHome> {
                         .copyWith(fontSize: FontSizes.s16)),
                 verticalSpace(Insets.xs * 6.25),
                 CardJobs(
+                    onTap: () {
+                      Get.to(() => PageJobDetail());
+                    },
                     positionName: 'Front-End Developer',
                     companyName: 'Google',
                     imageCompany: Assets.logoGoogle),
                 CardJobs(
+                    onTap: () {},
                     positionName: 'UI Designer Developer',
                     companyName: 'Instagram',
                     imageCompany: Assets.logoInstagram),
                 CardJobs(
+                    onTap: () {},
                     positionName: 'Data Scientist',
                     companyName: 'Facebook',
                     imageCompany: Assets.logoFacebook),
