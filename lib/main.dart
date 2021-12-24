@@ -1,5 +1,8 @@
 import 'package:findjob/features/onboarding/page_splash_screen.dart';
+import 'package:findjob/providers/auth_provider.dart';
+import 'package:findjob/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:get/route_manager.dart';
 
 void main() {
@@ -11,10 +14,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: GetMaterialApp(
-        home: PageSplashScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthProvider>(
+            create: (context) => AuthProvider()),
+        ChangeNotifierProvider<UserProvider>(
+            create: (context) => UserProvider()),
+      ],
+      child: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: GetMaterialApp(
+          home: PageSplashScreen(),
+        ),
       ),
     );
   }

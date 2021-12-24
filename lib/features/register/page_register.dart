@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:findjob/providers/auth_provider.dart';
+import 'package:findjob/providers/user_provider.dart';
 import 'package:findjob/shared/constants/assets.dart';
 import 'package:findjob/shared/constants/styles.dart';
 import 'package:findjob/shared/widgets/buttons/button_primary.dart';
@@ -6,8 +8,10 @@ import 'package:findjob/shared/widgets/inputs/input_email.dart';
 import 'package:findjob/shared/widgets/inputs/input_password.dart';
 import 'package:findjob/shared/widgets/inputs/input_primary.dart';
 import 'package:findjob/features/login/page_login.dart';
+import 'package:findjob/shared/widgets/others/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class PageRegister extends StatefulWidget {
   final String? titleBack;
@@ -31,13 +35,40 @@ class _PageRegisterState extends State<PageRegister> {
   bool isValidEmail = false;
   bool isValidPassword = false;
   bool isValidGoal = false;
+  bool isLoading = false;
 
-  validateForm() {
+  _offLoading() => setState(() => isLoading = false);
+
+  _onLoading() => setState(() => isLoading = true);
+
+  _validateForm(BuildContext context) {
     if (isValidName && isValidEmail && isValidPassword && isValidGoal) {
-      Get.to(() => PageLogin());
+      _register(context);
     } else {
       Get.snackbar('Info', 'Please complete form with correct',
           backgroundColor: Colors.yellow, colorText: AppColors.blackColor);
+    }
+  }
+
+  _register(BuildContext context) async {
+    var authProvider = Provider.of<AuthProvider>(context, listen: false);
+    var userProvider = Provider.of<UserProvider>(context, listen: false);
+    try {
+      _onLoading();
+      var response = await authProvider.register(
+          email: email, password: password, name: name, goal: goal);
+      _offLoading();
+      if (response != null) {
+        userProvider.user = response;
+        Get.offAll(() => PageLogin());
+      } else {
+        Get.snackbar('Error', 'Email sudah terdaftar',
+            backgroundColor: Colors.red, colorText: AppColors.whiteColor);
+      }
+    } catch (e) {
+      _offLoading();
+      Get.snackbar('Error', e.toString(),
+          backgroundColor: Colors.red, colorText: AppColors.whiteColor);
     }
   }
 
@@ -123,14 +154,16 @@ class _PageRegisterState extends State<PageRegister> {
                     }
                   },
                 ),
-                ButtonPrimary(
-                  backgroundColor: AppColors.mainColor,
-                  titleStyle: TextStyles.whiteMedium,
-                  title: 'Sign Up',
-                  onPressed: () {
-                    validateForm();
-                  },
-                ),
+                isLoading
+                    ? loadingIndicator()
+                    : ButtonPrimary(
+                        backgroundColor: AppColors.mainColor,
+                        titleStyle: TextStyles.whiteMedium,
+                        title: 'Sign Up',
+                        onPressed: () {
+                          _validateForm(context);
+                        },
+                      ),
                 TextButton(
                   onPressed: () {
                     Get.back();
