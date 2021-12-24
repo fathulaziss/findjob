@@ -1,6 +1,6 @@
-import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/widgets/card_jobs.dart';
+import 'package:findjob/shared/constants/assets.dart';
+import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/widgets/cards/card_jobs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

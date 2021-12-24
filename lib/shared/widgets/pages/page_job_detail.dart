@@ -1,7 +1,7 @@
-import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/widgets/button_primary.dart';
-import 'package:findjob/ui/widgets/item_job_detail.dart';
+import 'package:findjob/shared/constants/assets.dart';
+import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/widgets/buttons/button_primary.dart';
+import 'package:findjob/shared/widgets/others/item_job_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

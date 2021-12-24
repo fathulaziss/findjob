@@ -1,9 +1,9 @@
-import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/pages/non_logged/page_login.dart';
-import 'package:findjob/ui/pages/non_logged/page_register.dart';
-import 'package:findjob/ui/widgets/button_outlined.dart';
-import 'package:findjob/ui/widgets/button_primary.dart';
+import 'package:findjob/shared/constants/assets.dart';
+import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/widgets/buttons/button_outlined.dart';
+import 'package:findjob/shared/widgets/buttons/button_primary.dart';
+import 'package:findjob/features/login/page_login.dart';
+import 'package:findjob/features/register/page_register.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

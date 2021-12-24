@@ -1,8 +1,7 @@
 import 'dart:async';
-
-import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/pages/non_logged/page_onboarding.dart';
+import 'package:findjob/features/onboarding/page_onboarding.dart';
+import 'package:findjob/shared/constants/assets.dart';
+import 'package:findjob/shared/constants/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

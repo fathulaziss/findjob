@@ -1,12 +1,11 @@
 import 'dart:developer';
-
-import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/pages/non_logged/page_login.dart';
-import 'package:findjob/ui/widgets/button_primary.dart';
-import 'package:findjob/ui/widgets/input_email.dart';
-import 'package:findjob/ui/widgets/input_password.dart';
-import 'package:findjob/ui/widgets/input_primary.dart';
+import 'package:findjob/shared/constants/assets.dart';
+import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/widgets/buttons/button_primary.dart';
+import 'package:findjob/shared/widgets/inputs/input_email.dart';
+import 'package:findjob/shared/widgets/inputs/input_password.dart';
+import 'package:findjob/shared/widgets/inputs/input_primary.dart';
+import 'package:findjob/features/login/page_login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

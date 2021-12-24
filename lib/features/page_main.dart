@@ -1,8 +1,8 @@
-import 'package:findjob/ui/pages/logged/page_home.dart';
-import 'package:findjob/ui/pages/logged/page_favorite.dart';
-import 'package:findjob/ui/pages/logged/page_notification.dart';
-import 'package:findjob/ui/pages/logged/page_profile.dart';
-import 'package:findjob/ui/widgets/navbar_bottom.dart';
+import 'package:findjob/shared/widgets/others/navbar_bottom.dart';
+import 'package:findjob/features/home/page_home.dart';
+import 'package:findjob/features/favorite/page_favorite.dart';
+import 'package:findjob/features/notification/page_notification.dart';
+import 'package:findjob/features/profile/page_profile.dart';
 import 'package:flutter/material.dart';
 
 class PageMain extends StatefulWidget {

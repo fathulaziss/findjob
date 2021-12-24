@@ -1,21 +1,19 @@
-import 'package:findjob/shared/styles.dart';
+import 'package:findjob/shared/constants/styles.dart';
 import 'package:flutter/material.dart';
 
-class ButtonPrimary extends StatelessWidget {
+class ButtonOutlined extends StatelessWidget {
   final double? height;
-  final Color? backgroundColor;
   final String? title;
+  final Color? outlinedColor;
   final TextStyle? titleStyle;
   final Function? onPressed;
-  final EdgeInsets? margin;
 
-  const ButtonPrimary({
+  const ButtonOutlined({
     this.height,
-    this.backgroundColor,
     this.title,
     this.titleStyle,
+    this.outlinedColor,
     required this.onPressed,
-    this.margin,
     Key? key,
   }) : super(key: key);
 
@@ -24,7 +22,6 @@ class ButtonPrimary extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height ?? IconSizes.xl - 3,
-      margin: margin ?? EdgeInsets.zero,
       child: ElevatedButton(
         onPressed: () {
           onPressed!();
@@ -33,14 +30,15 @@ class ButtonPrimary extends StatelessWidget {
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Corners.lg * 8.25),
+              side: BorderSide(
+                  color: outlinedColor ?? AppColors.whiteColor, width: 1),
             ),
           ),
-          backgroundColor: MaterialStateProperty.all(
-              backgroundColor ?? AppColors.whiteColor),
+          backgroundColor: MaterialStateProperty.all(Colors.transparent),
           overlayColor: MaterialStateProperty.all(Colors.black12),
           shadowColor: MaterialStateProperty.all(Colors.transparent),
         ),
-        child: Text(title ?? '', style: titleStyle ?? TextStyles.purpleMedium),
+        child: Text(title ?? '', style: titleStyle ?? TextStyles.whiteMedium),
       ),
     );
   }

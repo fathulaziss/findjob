@@ -1,10 +1,10 @@
-import 'package:findjob/model/model_category.dart';
-import 'package:findjob/shared/assets.dart';
-import 'package:findjob/shared/styles.dart';
-import 'package:findjob/ui/pages/logged/page_category_detail.dart';
-import 'package:findjob/ui/pages/logged/page_job_detail.dart';
-import 'package:findjob/ui/widgets/card_categories.dart';
-import 'package:findjob/ui/widgets/card_jobs.dart';
+import 'package:findjob/models/model_category.dart';
+import 'package:findjob/shared/constants/assets.dart';
+import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/widgets/cards/card_categories.dart';
+import 'package:findjob/shared/widgets/cards/card_jobs.dart';
+import 'package:findjob/shared/widgets/pages/page_category_detail.dart';
+import 'package:findjob/shared/widgets/pages/page_job_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,4 +1,4 @@
-import 'package:findjob/ui/pages/non_logged/page_splash_screen.dart';
+import 'package:findjob/features/onboarding/page_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 

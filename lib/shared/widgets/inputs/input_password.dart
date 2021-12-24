@@ -1,5 +1,5 @@
-import 'package:findjob/shared/regex.dart';
-import 'package:findjob/shared/styles.dart';
+import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/helpers/regex.dart';
 import 'package:flutter/material.dart';
 
 class InputPassword extends StatefulWidget {

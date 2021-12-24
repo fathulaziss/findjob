@@ -1,4 +1,4 @@
-import 'package:findjob/shared/styles.dart';
+import 'package:findjob/shared/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 class PageProfile extends StatelessWidget {

@@ -1,31 +1,34 @@
-import 'package:findjob/shared/styles.dart';
+import 'package:findjob/shared/constants/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class InputPrimary extends StatefulWidget {
+class InputEmail extends StatefulWidget {
   final String label;
   final String hintText;
   final TextEditingController controller;
+  final ValueSetter<String> email;
+  final ValueSetter<bool> isValid;
   final EdgeInsetsGeometry? margin;
   final String? Function(String?)? validate;
   final String? Function(String?)? onChange;
-  final TextInputType keyboardType;
 
-  const InputPrimary({
+  const InputEmail({
     required this.label,
     required this.hintText,
     required this.controller,
+    required this.email,
+    required this.isValid,
     this.margin,
     this.validate,
     this.onChange,
-    this.keyboardType = TextInputType.text,
     Key? key,
   }) : super(key: key);
 
   @override
-  _InputPrimaryState createState() => _InputPrimaryState();
+  _InputEmailState createState() => _InputEmailState();
 }
 
-class _InputPrimaryState extends State<InputPrimary> {
+class _InputEmailState extends State<InputEmail> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,14 +44,24 @@ class _InputPrimaryState extends State<InputPrimary> {
             style: TextStyles.purpleNormal.copyWith(fontSize: FontSizes.s16),
             autofocus: true,
             obscureText: false,
-            keyboardType: widget.keyboardType,
+            keyboardType: TextInputType.emailAddress,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             textCapitalization: TextCapitalization.none,
             enableInteractiveSelection: true,
             cursorColor: AppColors.mainColor,
             controller: widget.controller,
             onChanged: widget.onChange,
-            validator: widget.validate,
+            validator: widget.validate ??
+                (value) {
+                  if (!GetUtils.isEmail(value.toString())) {
+                    widget.isValid(false);
+                    widget.email('');
+                    return 'Email format is not correct';
+                  }
+                  widget.email(value.toString());
+                  widget.isValid(true);
+                  return null;
+                },
             decoration: inputDecoration(hintText: widget.hintText),
           )
         ],
