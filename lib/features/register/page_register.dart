@@ -41,16 +41,16 @@ class _PageRegisterState extends State<PageRegister> {
 
   _onLoading() => setState(() => isLoading = true);
 
-  _validateForm(BuildContext context) {
+  _validateForm() {
     if (isValidName && isValidEmail && isValidPassword && isValidGoal) {
-      _register(context);
+      _register();
     } else {
       Get.snackbar('Info', 'Please complete form with correct',
           backgroundColor: Colors.yellow, colorText: AppColors.blackColor);
     }
   }
 
-  _register(BuildContext context) async {
+  _register() async {
     var authProvider = Provider.of<AuthProvider>(context, listen: false);
     var userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
@@ -62,7 +62,7 @@ class _PageRegisterState extends State<PageRegister> {
         userProvider.user = response;
         Get.offAll(() => PageLogin());
       } else {
-        Get.snackbar('Error', 'Email sudah terdaftar',
+        Get.snackbar('Error', 'Email already used',
             backgroundColor: Colors.red, colorText: AppColors.whiteColor);
       }
     } catch (e) {
@@ -161,7 +161,7 @@ class _PageRegisterState extends State<PageRegister> {
                         titleStyle: TextStyles.whiteMedium,
                         title: 'Sign Up',
                         onPressed: () {
-                          _validateForm(context);
+                          _validateForm();
                         },
                       ),
                 TextButton(

@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:findjob/providers/auth_provider.dart';
+import 'package:findjob/providers/user_provider.dart';
 import 'package:findjob/shared/constants/assets.dart';
 import 'package:findjob/shared/constants/styles.dart';
 import 'package:findjob/shared/widgets/buttons/button_primary.dart';
@@ -6,8 +8,10 @@ import 'package:findjob/shared/widgets/inputs/input_email.dart';
 import 'package:findjob/shared/widgets/inputs/input_password.dart';
 import 'package:findjob/features/page_main.dart';
 import 'package:findjob/features/register/page_register.dart';
+import 'package:findjob/shared/widgets/others/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class PageLogin extends StatefulWidget {
   const PageLogin({Key? key}) : super(key: key);
@@ -23,10 +27,36 @@ class _PageLoginState extends State<PageLogin> {
   String password = '';
   bool isValidEmail = false;
   bool isValidPassword = false;
+  bool isLoading = false;
+
+  _onLoading() => setState(() => isLoading = true);
+
+  _offLoading() => setState(() => isLoading = false);
+
+  _login() async {
+    var authProvider = Provider.of<AuthProvider>(context, listen: false);
+    var userProvider = Provider.of<UserProvider>(context, listen: false);
+    try {
+      _onLoading();
+      var response = await authProvider.login(email: email, password: password);
+      _offLoading();
+      if (response != null) {
+        userProvider.user = response;
+        Get.offAll(() => PageMain(initial: 0));
+      } else {
+        Get.snackbar('Error', 'Wrong Email or Password',
+            backgroundColor: Colors.red, colorText: AppColors.whiteColor);
+      }
+    } catch (e) {
+      _offLoading();
+      Get.snackbar('Error', e.toString(),
+          backgroundColor: Colors.red, colorText: AppColors.whiteColor);
+    }
+  }
 
   validateForm() {
     if (isValidEmail && isValidPassword) {
-      Get.to(() => PageMain(initial: 0));
+      _login();
     } else {
       Get.snackbar('Info', 'Input your Email and Password with correct',
           backgroundColor: Colors.yellow, colorText: AppColors.blackColor);
@@ -82,14 +112,16 @@ class _PageLoginState extends State<PageLogin> {
                   isValid: (bool value) {},
                 ),
                 verticalSpace(Insets.xl),
-                ButtonPrimary(
-                  backgroundColor: AppColors.mainColor,
-                  titleStyle: TextStyles.whiteMedium,
-                  title: 'Sign In',
-                  onPressed: () {
-                    validateForm();
-                  },
-                ),
+                isLoading
+                    ? loadingIndicator()
+                    : ButtonPrimary(
+                        backgroundColor: AppColors.mainColor,
+                        titleStyle: TextStyles.whiteMedium,
+                        title: 'Sign In',
+                        onPressed: () {
+                          validateForm();
+                        },
+                      ),
                 TextButton(
                   onPressed: () {
                     Get.to(() => PageRegister(titleBack: "Back to Sign In"));

@@ -34,4 +34,24 @@ class AuthProvider with ChangeNotifier {
       rethrow;
     }
   }
+
+  Future<ModelUser?> login(
+      {required String email, required String password}) async {
+    try {
+      final payload = {"email": email, "password": password};
+      // var response = await Api().apiJSONPost('register', payload);
+      var response = await http.post(Uri.parse(AppConfig.baseUrl + 'login'),
+          body: payload);
+      logSys(response.statusCode.toString());
+      logSys(response.body);
+      if (response.statusCode == 200) {
+        return ModelUser.fromJson(jsonDecode(response.body));
+      } else {
+        return null;
+      }
+    } catch (e) {
+      logSys('error : $e');
+      rethrow;
+    }
+  }
 }
