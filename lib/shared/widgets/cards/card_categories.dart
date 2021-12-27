@@ -33,10 +33,11 @@ class CardCategories extends StatelessWidget {
           height: IconSizes.xxl * 3.3,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Corners.xl),
-              image: DecorationImage(image: AssetImage(image))),
+              image: DecorationImage(image: NetworkImage(image))),
           alignment: Alignment.bottomLeft,
           child: Padding(
-            padding: EdgeInsets.only(left: Insets.lg, bottom: Insets.lg),
+            padding: EdgeInsets.only(
+                right: Insets.lg, left: Insets.lg, bottom: Insets.lg),
             child: Text(title,
                 style:
                     TextStyles.whiteMedium.copyWith(fontSize: FontSizes.s18)),
