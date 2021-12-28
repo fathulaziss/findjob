@@ -1,5 +1,7 @@
 import 'package:findjob/models/model_category.dart';
+import 'package:findjob/models/model_job.dart';
 import 'package:findjob/providers/category_provider.dart';
+import 'package:findjob/providers/job_provider.dart';
 import 'package:findjob/providers/user_provider.dart';
 import 'package:findjob/shared/constants/assets.dart';
 import 'package:findjob/shared/constants/styles.dart';
@@ -23,10 +25,11 @@ class _PageHomeState extends State<PageHome> {
   @override
   Widget build(BuildContext context) {
     var categoryProvider = Provider.of<CategoryProvider>(context);
-
+    var jobProvider = Provider.of<JobProvider>(context);
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Column(
+      child: Flex(
+        direction: Axis.vertical,
         children: [
           buildProfile(),
           Container(
@@ -90,23 +93,28 @@ class _PageHomeState extends State<PageHome> {
                     style: TextStyles.blackNormal
                         .copyWith(fontSize: FontSizes.s16)),
                 verticalSpace(Insets.xs * 6.25),
-                CardJobs(
-                    onTap: () {
-                      Get.to(() => PageJobDetail());
-                    },
-                    positionName: 'Front-End Developer',
-                    companyName: 'Google',
-                    imageCompany: Assets.logoGoogle),
-                CardJobs(
-                    onTap: () {},
-                    positionName: 'UI Designer Developer',
-                    companyName: 'Instagram',
-                    imageCompany: Assets.logoInstagram),
-                CardJobs(
-                    onTap: () {},
-                    positionName: 'Data Scientist',
-                    companyName: 'Facebook',
-                    imageCompany: Assets.logoFacebook),
+                FutureBuilder<List<ModelJob>>(
+                  future: jobProvider.getJobs(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return Column(
+                        children: snapshot.data!
+                            .map(
+                              (e) => CardJobs(
+                                  onTap: () {
+                                    Get.to(() => PageJobDetail());
+                                  },
+                                  positionName: e.name,
+                                  companyName: e.companyName,
+                                  imageCompany: e.companyLogo),
+                            )
+                            .toList(),
+                      );
+                    } else {
+                      return loadingIndicator();
+                    }
+                  },
+                ),
                 verticalSpace(Insets.xxl),
               ],
             ),

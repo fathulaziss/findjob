@@ -28,7 +28,7 @@ class CardJobs extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(imageCompany, width: Sizes.med * 2.25),
+                Image.network(imageCompany, width: Sizes.med * 2.25),
                 horizontalSpace(Insets.med * 2),
                 Expanded(
                     child: Column(
