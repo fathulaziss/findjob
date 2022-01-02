@@ -4,6 +4,7 @@ import 'package:findjob/providers/category_provider.dart';
 import 'package:findjob/providers/job_provider.dart';
 import 'package:findjob/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:get/route_manager.dart';
 
@@ -28,8 +29,17 @@ class MyApp extends StatelessWidget {
       ],
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: GetMaterialApp(
-          home: PageSplashScreen(),
+        child: ScreenUtilInit(
+          designSize: const Size(375, 782),
+          builder: () => GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            builder: (context, child) => MediaQuery(
+              /// Setting font does not change with system font size
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+              child: child!,
+            ),
+            home: PageSplashScreen(),
+          ),
         ),
       ),
     );

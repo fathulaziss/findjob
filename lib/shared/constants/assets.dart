@@ -19,6 +19,7 @@ class Assets {
   static String imageCategory4 = 'assets/images/image_category4.png';
   static String imageCategory5 = 'assets/images/image_category5.png';
   static String imageCategoryDetail = 'assets/images/image_category_detail.png';
+  static String imageComingSoon = 'assets/images/image_comingsoon.png';
   static String logoGoogle = 'assets/logos/logo_google.png';
   static String logoInstagram = 'assets/logos/logo_instagram.png';
   static String logoFacebook = 'assets/logos/logo_facebook.png';

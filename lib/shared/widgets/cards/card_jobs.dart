@@ -1,18 +1,15 @@
+import 'package:findjob/models/model_job.dart';
 import 'package:findjob/shared/constants/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CardJobs extends StatelessWidget {
-  final String positionName;
-  final String companyName;
-  final String imageCompany;
+  final ModelJob modelJob;
   final Function() onTap;
 
   const CardJobs({
-    required this.positionName,
-    required this.companyName,
-    required this.imageCompany,
     required this.onTap,
+    required this.modelJob,
     Key? key,
   }) : super(key: key);
 
@@ -28,17 +25,17 @@ class CardJobs extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.network(imageCompany, width: Sizes.med * 2.25),
+                Image.network(modelJob.companyLogo, width: Sizes.med * 2.25),
                 horizontalSpace(Insets.med * 2),
                 Expanded(
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(positionName,
+                    Text(modelJob.name,
                         style: TextStyles.blackMedium
                             .copyWith(fontSize: FontSizes.s16)),
                     verticalSpace(Insets.xs / 2),
-                    Text(companyName, style: TextStyles.greyNormal),
+                    Text(modelJob.companyName, style: TextStyles.greyNormal),
                     verticalSpace(Insets.lg),
                     Container(
                         width: Get.width,

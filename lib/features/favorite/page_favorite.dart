@@ -1,4 +1,4 @@
-import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/widgets/pages/page_coming_soon.dart';
 import 'package:flutter/material.dart';
 
 class PageFavorite extends StatelessWidget {
@@ -6,11 +6,6 @@ class PageFavorite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Text("Like Page", style: TextStyles.blackMedium),
-      ),
-    );
+    return PageComingSoon();
   }
 }

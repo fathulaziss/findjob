@@ -1,14 +1,25 @@
-import 'package:findjob/shared/constants/assets.dart';
+import 'package:findjob/models/model_category.dart';
+import 'package:findjob/models/model_job.dart';
+import 'package:findjob/providers/job_provider.dart';
 import 'package:findjob/shared/constants/styles.dart';
 import 'package:findjob/shared/widgets/cards/card_jobs.dart';
+import 'package:findjob/shared/widgets/others/loading_indicator.dart';
+import 'package:findjob/shared/widgets/pages/page_job_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class PageCategoryDetail extends StatelessWidget {
-  const PageCategoryDetail({Key? key}) : super(key: key);
+  final ModelCategory modelCategory;
+
+  const PageCategoryDetail({
+    required this.modelCategory,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var jobProvider = Provider.of<JobProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -18,8 +29,8 @@ class PageCategoryDetail extends StatelessWidget {
               height: IconSizes.xxl * 4.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(Assets.imageCategoryDetail),
-                  fit: BoxFit.fill,
+                  image: NetworkImage(modelCategory.imageUrl),
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(Corners.xl),
@@ -34,7 +45,7 @@ class PageCategoryDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Website Developer',
+                      modelCategory.name,
                       style: TextStyles.whiteSemiBold
                           .copyWith(fontSize: FontSizes.s24),
                     ),
@@ -58,41 +69,51 @@ class PageCategoryDetail extends StatelessWidget {
                       style: TextStyles.blackNormal
                           .copyWith(fontSize: FontSizes.s16)),
                   verticalSpace(Insets.xs * 6.25),
-                  CardJobs(
-                      onTap: () {},
-                      positionName: 'Front-End Developer',
-                      companyName: 'Google',
-                      imageCompany: Assets.logoGoogle),
-                  CardJobs(
-                      onTap: () {},
-                      positionName: 'UI Designer Developer',
-                      companyName: 'Instagram',
-                      imageCompany: Assets.logoInstagram),
-                  CardJobs(
-                      onTap: () {},
-                      positionName: 'Data Scientist',
-                      companyName: 'Facebook',
-                      imageCompany: Assets.logoFacebook),
-                  verticalSpace(Insets.xl * 1.5),
+                  FutureBuilder<List<ModelJob>>(
+                    future:
+                        jobProvider.getJobs(filterCategory: modelCategory.name),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return Column(
+                          children: snapshot.data!
+                              .map(
+                                (e) => CardJobs(
+                                  onTap: () =>
+                                      Get.to(() => PageJobDetail(modelJob: e)),
+                                  modelJob: e,
+                                ),
+                              )
+                              .toList(),
+                        );
+                      } else {
+                        return loadingIndicator();
+                      }
+                    },
+                  ),
                   Text('New Startups',
                       style: TextStyles.blackNormal
                           .copyWith(fontSize: FontSizes.s16)),
                   verticalSpace(Insets.xs * 6.25),
-                  CardJobs(
-                      onTap: () {},
-                      positionName: 'Front-End Developer',
-                      companyName: 'Google',
-                      imageCompany: Assets.logoGoogle),
-                  CardJobs(
-                      onTap: () {},
-                      positionName: 'UI Designer Developer',
-                      companyName: 'Instagram',
-                      imageCompany: Assets.logoInstagram),
-                  CardJobs(
-                      onTap: () {},
-                      positionName: 'Data Scientist',
-                      companyName: 'Facebook',
-                      imageCompany: Assets.logoFacebook),
+                  FutureBuilder<List<ModelJob>>(
+                    future: jobProvider.getJobs(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return Column(
+                          children: snapshot.data!
+                              .map(
+                                (e) => CardJobs(
+                                  onTap: () =>
+                                      Get.to(() => PageJobDetail(modelJob: e)),
+                                  modelJob: e,
+                                ),
+                              )
+                              .toList(),
+                        );
+                      } else {
+                        return loadingIndicator();
+                      }
+                    },
+                  ),
                 ],
               ),
             )

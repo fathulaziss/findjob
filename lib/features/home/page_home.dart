@@ -58,15 +58,16 @@ class _PageHomeState extends State<PageHome> {
                             return Padding(
                               padding: EdgeInsets.only(
                                 left: index == 0 ? Insets.med : 0,
-                                right: index == snapshot.data!.length
-                                    ? Insets.sm
+                                right: index == snapshot.data!.length - 1
+                                    ? Insets.med
                                     : 0,
                               ),
                               child: CardCategories(
                                 margin: EdgeInsets.only(
                                     left: Insets.med, right: Insets.sm),
                                 onTap: () {
-                                  Get.to(() => PageCategoryDetail());
+                                  Get.to(() => PageCategoryDetail(
+                                      modelCategory: snapshot.data![index]));
                                 },
                                 title: snapshot.data![index].name,
                                 image: snapshot.data![index].imageUrl,
@@ -101,12 +102,10 @@ class _PageHomeState extends State<PageHome> {
                         children: snapshot.data!
                             .map(
                               (e) => CardJobs(
-                                  onTap: () {
-                                    Get.to(() => PageJobDetail());
-                                  },
-                                  positionName: e.name,
-                                  companyName: e.companyName,
-                                  imageCompany: e.companyLogo),
+                                onTap: () =>
+                                    Get.to(() => PageJobDetail(modelJob: e)),
+                                modelJob: e,
+                              ),
                             )
                             .toList(),
                       );

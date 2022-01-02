@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-double scale = Get.width <= 320 ? 0.75 : 1;
+// double scale = Get.width <= 320 ? 0.75 : 1;
 
 Widget verticalSpace(double v) {
   return SizedBox(height: v);
@@ -25,60 +25,90 @@ class AppColors {
 }
 
 class FontSizes {
-  static double get s10 => 10 * scale;
-  static double get s12 => 12 * scale;
-  static double get s14 => 14 * scale;
-  static double get s16 => 16 * scale;
-  static double get s18 => 18 * scale;
-  static double get s20 => 20 * scale;
-  static double get s24 => 24 * scale;
-  static double get s32 => 32 * scale;
+  static double get s10 => 10.w;
+  static double get s12 => 12.w;
+  static double get s14 => 14.w;
+  static double get s16 => 16.w;
+  static double get s18 => 18.w;
+  static double get s20 => 20.w;
+  static double get s24 => 24.w;
+  static double get s32 => 32.w;
+  // static double get s10 => 10 * scale;
+  // static double get s12 => 12 * scale;
+  // static double get s14 => 14 * scale;
+  // static double get s16 => 16 * scale;
+  // static double get s18 => 18 * scale;
+  // static double get s20 => 20 * scale;
+  // static double get s24 => 24 * scale;
+  // static double get s32 => 32 * scale;
 }
 
 class Insets {
-  static double get xs => 4 * scale;
-  static double get sm => 8 * scale;
-  static double get med => 12 * scale;
-  static double get lg => 16 * scale;
-  static double get xl => 20 * scale;
-  static double get xxl => 32 * scale;
+  static double get xs => 4.w;
+  static double get sm => 8.w;
+  static double get med => 12.w;
+  static double get lg => 16.w;
+  static double get xl => 20.w;
+  static double get xxl => 32.w;
+  // static double get xs => 4 * scale;
+  // static double get sm => 8 * scale;
+  // static double get med => 12 * scale;
+  // static double get lg => 16 * scale;
+  // static double get xl => 20 * scale;
+  // static double get xxl => 32 * scale;
 }
 
 class IconSizes {
-  static double get sm => 16 * scale;
-  static double get med => 24 * scale;
-  static double get lg => 32 * scale;
-  static double get xl => 48 * scale;
-  static double get xxl => 60 * scale;
+  static double get sm => 16.w;
+  static double get med => 24.w;
+  static double get lg => 32.w;
+  static double get xl => 48.w;
+  static double get xxl => 60.w;
+  // static double get sm => 16 * scale;
+  // static double get med => 24 * scale;
+  // static double get lg => 32 * scale;
+  // static double get xl => 48 * scale;
+  // static double get xxl => 60 * scale;
 }
 
 class Sizes {
-  static double get xs => 8 * scale;
-  static double get sm => 12 * scale;
-  static double get med => 20 * scale;
-  static double get lg => 32 * scale;
-  static double get xl => 48 * scale;
-  static double get xxl => 80 * scale;
+  static double get xs => 8.w;
+  static double get sm => 12.w;
+  static double get med => 20.w;
+  static double get lg => 32.w;
+  static double get xl => 48.w;
+  static double get xxl => 80.w;
+  // static double get xs => 8 * scale;
+  // static double get sm => 12 * scale;
+  // static double get med => 20 * scale;
+  // static double get lg => 32 * scale;
+  // static double get xl => 48 * scale;
+  // static double get xxl => 80 * scale;
 }
 
 class Corners {
-  static double sm = 3 * scale;
+  // static double sm = 3 * scale;
+  static double sm = 3.w;
   static BorderRadius smBorder = BorderRadius.all(smRadius);
   static Radius smRadius = Radius.circular(sm);
 
-  static double med = 5 * scale;
+  // static double med = 5 * scale;
+  static double med = 5.w;
   static BorderRadius medBorder = BorderRadius.all(medRadius);
   static Radius medRadius = Radius.circular(med);
 
-  static double lg = 8 * scale;
+  // static double lg = 8 * scale;
+  static double lg = 8.w;
   static BorderRadius lgBorder = BorderRadius.all(lgRadius);
   static Radius lgRadius = Radius.circular(lg);
 
-  static double xl = 16 * scale;
+  // static double xl = 16 * scale;
+  static double xl = 16.w;
   static BorderRadius xlBorder = BorderRadius.all(xlRadius);
   static Radius xlRadius = Radius.circular(xl);
 
-  static double xxl = 24 * scale;
+  // static double xxl = 24 * scale;
+  static double xxl = 24.w;
   static BorderRadius xxlBorder = BorderRadius.all(xxlRadius);
   static Radius xxlRadius = Radius.circular(xxl);
 }
