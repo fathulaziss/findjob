@@ -1,3 +1,4 @@
+import 'package:findjob/shared/constants/styles.dart';
 import 'package:findjob/shared/widgets/others/navbar_bottom.dart';
 import 'package:findjob/features/home/page_home.dart';
 import 'package:findjob/features/favorite/page_favorite.dart';
@@ -29,6 +30,11 @@ class _PageMainState extends State<PageMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.mainColor,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 0,
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(

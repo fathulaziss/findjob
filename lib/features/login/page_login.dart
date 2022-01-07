@@ -3,12 +3,14 @@ import 'package:findjob/providers/auth_provider.dart';
 import 'package:findjob/providers/user_provider.dart';
 import 'package:findjob/shared/constants/assets.dart';
 import 'package:findjob/shared/constants/styles.dart';
+import 'package:findjob/shared/helpers/utils.dart';
 import 'package:findjob/shared/widgets/buttons/button_primary.dart';
 import 'package:findjob/shared/widgets/inputs/input_email.dart';
 import 'package:findjob/shared/widgets/inputs/input_password.dart';
 import 'package:findjob/features/page_main.dart';
 import 'package:findjob/features/register/page_register.dart';
 import 'package:findjob/shared/widgets/others/loading_indicator.dart';
+import 'package:findjob/shared/widgets/others/popup_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +39,7 @@ class _PageLoginState extends State<PageLogin> {
     var authProvider = Provider.of<AuthProvider>(context, listen: false);
     var userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
+      dismisKeyboard();
       _onLoading();
       var response = await authProvider.login(email: email, password: password);
       _offLoading();
@@ -44,8 +47,13 @@ class _PageLoginState extends State<PageLogin> {
         userProvider.user = response;
         Get.offAll(() => PageMain(initial: 0));
       } else {
-        Get.snackbar('Error', 'Wrong Email or Password',
-            backgroundColor: Colors.red, colorText: AppColors.whiteColor);
+        showPopUpDialog(
+          title: 'Error',
+          description: 'Wrong Email or Password',
+          labelButton: 'OK',
+          buttonColor: AppColors.secondColor,
+          onPress: () => Get.back(),
+        );
       }
     } catch (e) {
       _offLoading();
@@ -66,6 +74,11 @@ class _PageLoginState extends State<PageLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.mainColor,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 0,
+      ),
       backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: Padding(
