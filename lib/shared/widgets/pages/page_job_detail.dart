@@ -21,6 +21,12 @@ class _PageJobDetailState extends State<PageJobDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.mainColor,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 0,
+      ),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Insets.med * 2),
