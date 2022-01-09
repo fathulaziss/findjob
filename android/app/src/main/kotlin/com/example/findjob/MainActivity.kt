@@ -1,4 +1,4 @@
-package com.example.findjob
+package com.fathulazis.findjob
 
 import io.flutter.embedding.android.FlutterActivity
 
