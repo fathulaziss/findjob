@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fathulazis.findjob">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="findjob"
+        android:label="Find Job"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
